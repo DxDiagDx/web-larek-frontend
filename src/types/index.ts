@@ -9,7 +9,7 @@ export interface ICard {
     image: string;
     title: string;
     category: string;
-    price: number;
+    price: number | null;
 }
 
 export interface IOrder {
@@ -22,8 +22,8 @@ export interface IOrder {
 }
 
 export interface IBasket {
-    basketList: TCardCompact[];
-    getTotal(): number;
+    list: TCardCompact[];
+    total: number;
 }
 
 export type TCardCompact = Pick<ICard, 'title' | 'price'>
