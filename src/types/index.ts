@@ -1,8 +1,3 @@
-export interface ICardCatalog {
-    cards: ICard[];
-    preview: string | null;
-}
-
 export interface ICard {
     id: string;
     description: string;
@@ -18,24 +13,25 @@ export interface IOrder {
     phone: string;
     address: string;
     total: number;
-    items: ICard[];
+    items: string[];
 }
 
-export interface IBasket {
-    list: TCardCompact[];
+export interface IOrderSuccess {
+    id: string;
     total: number;
 }
 
-export type TCardCompact = Pick<ICard, 'title' | 'price'>
-
-export interface ICheckOut {
-    checkValidation(data: Record<keyof TCheckOut, string>): boolean;
-}
-
-export interface IContacts {
-    checkValidation(data: Record<keyof TContacts, string>): boolean;
+export interface IBasket {
+    items: string[];
+    total: number;
 }
 
 export type TCheckOut = Pick<IOrder, 'payment' | 'address'>
 
 export type TContacts = Pick<IOrder, 'email' | 'phone'>
+
+export type FormErrors = Partial<Record<keyof IOrder, string>>;
+
+export interface IActions {
+    onClick: (event: MouseEvent) => void;
+}
