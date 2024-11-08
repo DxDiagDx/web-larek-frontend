@@ -43,7 +43,7 @@ events.on('card:select', (item: ICard) => {
 })
 
 events.on('preview:changed', (item: ICard) => {
-    console.log('preview:changed');
+    ('preview:changed');
     const inBasket = appData.inBasket(item);
     const card = new Card(cloneTemplate(cardPreviewTemplate), {
         onClick: () => {
@@ -62,13 +62,11 @@ events.on('preview:changed', (item: ICard) => {
 
 // Открыть корзину
 events.on('basket:open', () => {
-    console.log('basket:open');
     modal.render({content: basket.render()})
 })
 
 // Изменился состав корзины
 events.on('basket:change', () => {
-    console.log('basket:change');
     page.counter = appData.basket.items.length;
 
     basket.items = appData.basket.items.map((id, index) => {
@@ -111,9 +109,9 @@ events.on(/^contacts\..*:change/, (data: {field: keyof (TCheckOut & TContacts), 
 
 // Изменилось состояние валидации формы
 events.on('formErrors:change', (errors: Partial<IOrder>) => {
-    const { payment, address, email, phone } = errors;
+    const { payment, address, email, phone } = errors;  
     order.valid = !payment && !address;
-    order.errors = Object.values({address}).filter(i => !!i).join('; ');
+    order.errors = Object.values({payment, address}).filter(i => !!i).join('; ');
     contacts.valid = !email && !phone;
     contacts.errors = Object.values({email, phone}).filter(i => !!i).join('; ');
 });

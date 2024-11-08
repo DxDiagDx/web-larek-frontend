@@ -29,15 +29,15 @@ export class Page extends Component<IPage> {
         this._gallery.replaceChildren(...items);
     }
 
+    set counter(value: number) {
+        this.setText(this._counter, value);
+    }
+
     set locked(value: boolean) {
         if (value) {
             this._wrapper.classList.add('page__wrapper_locked');
         } else {
             this._wrapper.classList.remove('page__wrapper_locked');
         }
-    }
-
-    set counter(value: number) {
-        this.setText(this._counter, value);
     }
 }

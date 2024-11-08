@@ -69,6 +69,9 @@ export class AppState extends Model<IAppState>{
 
     validateOrder() {
         const errors: typeof this.formErrors = {};
+        if (!this.order.payment) {
+            errors.payment = 'Необходимо указать способ оплаты';
+        }
         if (!this.order.address) {
             errors.address = 'Необходимо указать адрес';
         }
