@@ -11,7 +11,7 @@ import { ICard, IOrder, TCheckOut, TContacts } from './types';
 import { Basket } from './components/common/Basket';
 import { Order } from './components/Order';
 import { Сontacts } from './components/Сontacts';
-import { Success } from './components/Success';
+import { Success } from './components/common/Success';
 
 const events = new EventEmitter();
 const api = new ShopAPI(CDN_URL, API_URL)
@@ -86,7 +86,7 @@ events.on('basket:change', () => {
 })
 
 // Открыть форму оформления заказа
-events.on('order:open', () => {
+events.on('order:open', () => {   
     modal.render({
         content: order.render({
             payment: '',
@@ -108,7 +108,7 @@ events.on(/^contacts\..*:change/, (data: {field: keyof (TCheckOut & TContacts), 
 })
 
 // Изменилось состояние валидации формы
-events.on('formErrors:change', (errors: Partial<IOrder>) => {
+events.on('formErrors:change', (errors: Partial<IOrder>) => {   
     const { payment, address, email, phone } = errors;  
     order.valid = !payment && !address;
     order.errors = Object.values({payment, address}).filter(i => !!i).join('; ');

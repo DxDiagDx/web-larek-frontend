@@ -1,6 +1,6 @@
-import { IActions, IOrderSuccess } from "../types";
-import { ensureElement } from "../utils/utils";
-import { Component } from "./base/Component";
+import { IActions, IOrderSuccess } from "../../types";
+import { ensureElement } from "../../utils/utils";
+import { Component } from "../base/Component";
 
 export class Success extends Component<IOrderSuccess> {
     protected _total: HTMLElement;

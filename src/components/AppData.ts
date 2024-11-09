@@ -53,6 +53,10 @@ export class AppState extends Model<IAppState>{
     }
 
     clearBasket() {
+        this.order.payment = '';
+        this.order.email = '';
+        this.order.phone = '';
+        this.order.address = '';
         this.basket.items = [];
         this.basket.total = 0;
         this.emitChanges('basket:change');
